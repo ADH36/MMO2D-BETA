@@ -1,0 +1,352 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Home Screen */
+.home-screen {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.logo-section {
+    margin-bottom: 50px;
+}
+
+.game-title {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.game-subtitle {
+    color: #666;
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+.menu-section {
+    margin-bottom: 40px;
+}
+
+.menu-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 18px 30px;
+    margin: 12px auto;
+    display: block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.menu-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.menu-btn:active {
+    transform: translateY(0);
+}
+
+.user-section {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+
+#userDisplay {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.small-btn {
+    padding: 10px 25px;
+    margin: 0 5px;
+    background: #fff;
+    color: #667eea;
+    border: 2px solid #667eea;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.small-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Auth Screens */
+.auth-screen {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.auth-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container input {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.auth-container input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.auth-btn {
+    padding: 15px 30px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    padding: 12px 30px;
+    margin-top: 20px;
+    background: transparent;
+    color: #666;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+/* Settings Screen */
+.settings-screen {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.settings-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.settings-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.settings-section {
+    margin-bottom: 30px;
+}
+
+.settings-section h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.setting-item label {
+    display: block;
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.setting-item input[type="range"] {
+    width: 70%;
+    margin-right: 10px;
+}
+
+.setting-item select {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.setting-item input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.setting-item p {
+    color: #666;
+    margin: 5px 0;
+}
+
+.settings-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.settings-actions button {
+    flex: 1;
+}
+
+/* About Screen */
+.about-screen {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.about-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.about-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.about-content {
+    color: #555;
+    line-height: 1.8;
+}
+
+.about-content h3 {
+    color: #667eea;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.about-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-content li {
+    margin-bottom: 8px;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 36px;
+    }
+    
+    .home-screen,
+    .auth-container,
+    .settings-container,
+    .about-container {
+        padding: 30px 20px;
+    }
+    
+    .menu-btn {
+        font-size: 16px;
+        padding: 15px 25px;
+    }
+}
