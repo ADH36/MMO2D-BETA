@@ -1,9 +1,18 @@
+// Load settings from session storage
+const gameSettings = JSON.parse(sessionStorage.getItem('gameSettings') || '{}');
+const playerName = sessionStorage.getItem('playerName') || `Player${Math.floor(Math.random() * 1000)}`;
+
 // Game Configuration
 const WORLD_WIDTH = 2000;
 const WORLD_HEIGHT = 1500;
 const PLAYER_SIZE = 30;
 const PLAYER_SPEED = 5;
 const TILE_SIZE = 50;
+
+// Apply settings
+const SHOW_MINIMAP = gameSettings.showMinimap !== undefined ? gameSettings.showMinimap : true;
+const SHOW_PLAYER_NAMES = gameSettings.showPlayerNames !== undefined ? gameSettings.showPlayerNames : true;
+const GRAPHICS_QUALITY = gameSettings.graphicsQuality || 'medium';
 
 // Initialize socket connection
 const socket = io();
@@ -37,6 +46,8 @@ const keys = {
 socket.on('connect', () => {
     console.log('Connected to server!');
     myId = socket.id;
+    // Send player name to server
+    socket.emit('setPlayerName', playerName);
 });
 
 socket.on('currentPlayers', (serverPlayers) => {
@@ -56,6 +67,12 @@ socket.on('playerMoved', (playerData) => {
         players[playerData.id].y = playerData.y;
         players[playerData.id].velocityX = playerData.velocityX;
         players[playerData.id].velocityY = playerData.velocityY;
+    }
+});
+
+socket.on('playerNameChanged', (data) => {
+    if (players[data.id]) {
+        players[data.id].name = data.name;
     }
 });
 
@@ -212,11 +229,13 @@ function drawPlayers() {
             ctx.lineWidth = player.id === myId ? 3 : 2;
             ctx.stroke();
 
-            // Draw player name
-            ctx.fillStyle = '#000';
-            ctx.font = 'bold 12px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText(player.name, screenX, screenY - PLAYER_SIZE);
+            // Draw player name (if enabled in settings)
+            if (SHOW_PLAYER_NAMES) {
+                ctx.fillStyle = '#000';
+                ctx.font = 'bold 12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(player.name, screenX, screenY - PLAYER_SIZE);
+            }
 
             // Draw direction indicator if moving
             if (player.velocityX !== 0 || player.velocityY !== 0) {
@@ -291,10 +310,19 @@ function gameLoop() {
     // Draw everything
     drawMap();
     drawPlayers();
-    drawMinimap();
+    
+    // Draw minimap (if enabled in settings)
+    if (SHOW_MINIMAP) {
+        drawMinimap();
+    }
 
     requestAnimationFrame(gameLoop);
 }
+
+// Back to home button
+document.getElementById('backToHomeBtn').addEventListener('click', () => {
+    window.location.href = '/home.html';
+});
 
 // Start game loop
 gameLoop();

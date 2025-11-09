@@ -36,6 +36,18 @@ io.on('connection', (socket) => {
   // Notify all other players about new player
   socket.broadcast.emit('newPlayer', players[socket.id]);
 
+  // Handle player name update
+  socket.on('setPlayerName', (name) => {
+    if (players[socket.id]) {
+      players[socket.id].name = name;
+      // Broadcast name change to all players
+      io.emit('playerNameChanged', {
+        id: socket.id,
+        name: name
+      });
+    }
+  });
+
   // Handle player movement
   socket.on('playerMovement', (movementData) => {
     if (players[socket.id]) {

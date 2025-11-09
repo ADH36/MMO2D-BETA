@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D MMO Game - Home</title>
+    <link rel="stylesheet" href="home-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="home-screen">
+            <div class="logo-section">
+                <h1 class="game-title">2D MMO GAME</h1>
+                <p class="game-subtitle">BETA VERSION</p>
+            </div>
+            
+            <div class="menu-section">
+                <button class="menu-btn" id="playBtn">Play Game</button>
+                <button class="menu-btn" id="settingsBtn">Settings</button>
+                <button class="menu-btn" id="aboutBtn">About</button>
+            </div>
+            
+            <div class="user-section">
+                <p id="userDisplay">Not logged in</p>
+                <button class="small-btn" id="loginBtn">Login</button>
+                <button class="small-btn" id="logoutBtn" style="display: none;">Logout</button>
+            </div>
+        </div>
+        
+        <!-- Login Screen -->
+        <div class="auth-screen" id="loginScreen" style="display: none;">
+            <div class="auth-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="text" id="loginUsername" placeholder="Username" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button type="submit" class="auth-btn">Login</button>
+                    <p class="auth-link">Don't have an account? <a href="#" id="showSignupBtn">Sign Up</a></p>
+                    <button type="button" class="back-btn" id="backFromLogin">Back</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Signup Screen -->
+        <div class="auth-screen" id="signupScreen" style="display: none;">
+            <div class="auth-container">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <input type="text" id="signupUsername" placeholder="Username" required minlength="3">
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                    <input type="password" id="signupPassword" placeholder="Password" required minlength="6">
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                    <p class="auth-link">Already have an account? <a href="#" id="showLoginBtn">Login</a></p>
+                    <button type="button" class="back-btn" id="backFromSignup">Back</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Settings Screen -->
+        <div class="settings-screen" id="settingsScreen" style="display: none;">
+            <div class="settings-container">
+                <h2>Settings</h2>
+                <div class="settings-section">
+                    <h3>Game Settings</h3>
+                    <div class="setting-item">
+                        <label for="soundVolume">Sound Volume:</label>
+                        <input type="range" id="soundVolume" min="0" max="100" value="50">
+                        <span id="volumeValue">50%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label for="graphicsQuality">Graphics Quality:</label>
+                        <select id="graphicsQuality">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="showMinimap" checked>
+                            Show Minimap
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="showPlayerNames" checked>
+                            Show Player Names
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Controls</h3>
+                    <div class="setting-item">
+                        <p><strong>Movement:</strong> WASD or Arrow Keys</p>
+                        <p><strong>Camera:</strong> Follows player automatically</p>
+                    </div>
+                </div>
+                
+                <div class="settings-actions">
+                    <button class="auth-btn" id="saveSettings">Save Settings</button>
+                    <button class="back-btn" id="backFromSettings">Back</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- About Screen -->
+        <div class="about-screen" id="aboutScreen" style="display: none;">
+            <div class="about-container">
+                <h2>About 2D MMO Game</h2>
+                <div class="about-content">
+                    <p><strong>Version:</strong> BETA 1.0</p>
+                    <p><strong>Description:</strong> A real-time 2D multiplayer online game featuring map rendering, multiple online characters, and multiplayer functionality.</p>
+                    
+                    <h3>Features:</h3>
+                    <ul>
+                        <li>Real-time multiplayer gameplay</li>
+                        <li>Dynamic tile-based map system</li>
+                        <li>Smooth character movement</li>
+                        <li>Interactive minimap</li>
+                        <li>Player authentication system</li>
+                        <li>Customizable settings</li>
+                    </ul>
+                    
+                    <h3>Technology:</h3>
+                    <p>Built with Node.js, Express, Socket.IO, and HTML5 Canvas</p>
+                </div>
+                <button class="back-btn" id="backFromAbout">Back</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="home.js"></script>
+</body>
+</html>
