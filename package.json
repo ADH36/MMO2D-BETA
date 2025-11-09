@@ -1,0 +1,26 @@
+{
+  "name": "mmo2d-beta",
+  "version": "1.0.0",
+  "description": "2D MMO Game with map and multiple online characters",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "mmo",
+    "2d",
+    "game",
+    "multiplayer",
+    "online"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
