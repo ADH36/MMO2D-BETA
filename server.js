@@ -6,7 +6,7 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
-// Serve static files
+// Serve static files - index.html will be served automatically from public directory
 app.use(express.static('public'));
 
 // Game state
@@ -14,11 +14,6 @@ const players = {};
 const WORLD_WIDTH = 2000;
 const WORLD_HEIGHT = 1500;
 const PLAYER_SPEED = 5;
-
-// Serve the main page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 
 // Socket.IO connection handling
 io.on('connection', (socket) => {
